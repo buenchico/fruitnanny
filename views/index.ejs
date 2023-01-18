@@ -8,28 +8,42 @@
         DHT.init();
         VideoPlayer.init();
     });
-    
+
 </script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
   <div class="wrapper">
 
-    <!-- Main Header -->
+    <!-- REMOVING HEADER
+
     <header class="main-header">
       <% include ./partials/header %>
     </header>
-    <!-- Left side column. contains the logo and sidebar -->
+
     <aside class="main-sidebar">
       <% include ./partials/sidebar %>
     </aside>
+    -->
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Dashboard
+          <div class="pull-left image">
+              <img src="public/project/img/baby.png" class="img-circle" alt="User Image">
+          </div>
+          <div class="pull-left info">
+              <p id="name">Name</p>
+              <!-- Status -->
+              <a id="age">Age</a>
+              <script type="text/javascript">
+                  $("#name").text(config.baby_name);
+                  $(document).ready(function() {
+                      $("#age").text(AgeCalc.getAge(new Date(config.baby_birthday)));
+                  });
+              </script>
         </h1>
 
       </section>
@@ -38,25 +52,29 @@
       <section class="content">
         <div class="row">
           <div class="col-md-6">
-            
+
             <figure id="videoContainer" data-fullscreen="false">
-              <video id="video" autoplay muted playsinline> 
+              <video id="video" autoplay muted playsinline>
                 <!--source src="public/small.mp4" type="video/mp4"-->
               </video>
               <div id="fullscreen-info" class="fs-info">
+              <!-- REMOVING TEMPERATURE CONTROLS IN FS
                 <div id="fs-temperature" ></div>
                 <div id="fs-humidity" ></div>
+              -->
                 <div id="fs-audiolevel"></div>
               </div>
-              
+
               <!--div id="temperature" class="test"></div-->
               <div id="video-controls" class="controls" data-state="hidden">
                 <button id="playpause" type="button" data-state="play">
                   <i class="fa fa-play" aria-hidden="true"></i>
                 </button>
+                <!-- REMOVING LIGHT CONTROL
                 <button id="light" type="button" data-state="on">
                   <i class="fa fa-lightbulb-o"></i>
                 </button>
+                -->
                 <div class="empty">&nbsp;</div>
                 <button id="mute" type="button" data-state="mute">
                   <i class="fa fa-volume-up" aria-hidden="true"></i>
@@ -72,7 +90,7 @@
             <div id="spinner"> </div>
           </div>
           <div>
-          
+
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-12">
@@ -80,13 +98,15 @@
               </div>
             </div>
 
+            <!-- REMOVING TEMPERATURE & HUMIDITY CONTROLS
             <div class="row">
               <div id="temperature" class="col-md-5"></div>
               <div id="humidity" class="col-md-5"></div>
             </div>
+          -->
           </div>
-          
-          
+
+
           </div>
 
         </div>
@@ -100,11 +120,11 @@
 
   <!-- Main Footer -->
   <% include ./partials/footer %>
-  
+
 
   </div>
   <!-- ./wrapper -->
-  <% include ./partials/common-js %>  
+  <% include ./partials/common-js %>
   <% include ./partials/media-js %>
 
 
